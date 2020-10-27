@@ -1,0 +1,172 @@
+{% load currency_filters %}
+{% load category_tags %}
+{% load i18n %}
+{% load static %}
+
+
+
+
+
+
+<section class="top-header">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-4 ml-auto col-xs-12 col-sm-4">
+				<!-- Site Logo -->
+
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<div class="contact-number">
+					<form action="" method='GET'><input type="search" class="form-control"
+							value="{{ request.GET.q }}" name="q" placeholder="Search..."></form>
+
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Cart -->
+				<ul class="top-menu text-right list-inline">
+
+					<li class="dropdown search dropdown-slide">
+						<a href=""> <i class="tf-ion-ios-cart fs-24"></i>
+							 </a>
+					</li>
+					<!-- Search -->
+
+
+					
+					<li class="dropdown search dropdown-slide">
+						<a href=""> <i class="tf-ion-android-favorite-outline fs-24"></i>
+							Favourite </a>
+					</li>
+					<li class="dropdown search dropdown-slide">
+						<a href=""> <i class="tf-ion-log-out fs-24"></i> Logout </a>
+
+
+
+					</li>
+
+					
+
+					<li class="dropdown search dropdown-slide">
+
+
+						<a href=""> <i class="  tf-profile-male"></i> Login</a> </li>
+					
+
+
+					</li><!-- / Search -->
+
+
+
+				</ul><!-- / .nav .navbar-nav .navbar-right -->
+			</div>
+		</div>
+	</div>
+</section><!-- End Top Header Bar -->
+
+
+<!-- Main Menu Section -->
+<section class="menu">
+	<nav class="navbar navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<h2 class="menu-title"><a href=""><img src="{% static 'images/logo.svg' %}"
+							alt="Jane's Fashion Logo "></a></h2>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div><!-- / .navbar-header -->
+
+			<!-- Navbar Links -->
+			<div id="navbar" class="navbar-collapse collapse text-center">
+				<ul class="nav navbar-nav">
+
+					<!-- Home -->
+					<li class="dropdown ">
+						<a href="">Home</a>
+					</li><!-- / Home -->
+
+
+					<!-- Elements -->
+
+					<li class="dropdown ">
+						<a href="">Shop</a>
+					</li><!-- / Home -->
+					
+					<li class="dropdown ">
+						<a href="">{{ item.name|title}}</a>
+					</li>
+					
+				
+
+
+
+				</ul><!-- / .nav .navbar-nav -->
+
+			</div>
+			<!--/.navbar-collapse -->
+		</div><!-- / .container -->
+	</nav>
+</section>
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="btn btn-secondary float-right btn-cart ml-auto d-inline d-sm-none" href="{% url 'basket:summary' %}">
+        <i class="fas fa-shopping-cart"></i>
+        {% trans "Basket" %}
+        {% if not request.basket.is_empty %}
+            {% if request.basket.is_tax_known %}
+                {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}
+                    Total: {{ total }}
+                {% endblocktrans %}
+            {% else %}
+                {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}
+                    Total: {{ total }}
+                {% endblocktrans %}
+            {% endif %}
+        {% endif %}
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% trans "Browse store" %}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% category_tree depth=2 as tree_categories %}
+                    <a class="dropdown-item" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a>
+                    {% if tree_categories %}
+                        <div class="dropdown-divider"></div>
+                        {% for tree_category in tree_categories %}
+                            {% if tree_category.has_children %}
+                                <a class="dropdown-item" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
+                            {% else %}
+                                <a class="dropdown-item" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <div class="dropdown-divider"></div>
+                    {% block nav_dropdown_extra_items %}
+                        <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans "Offers" %}</a>
+                    {% endblock %}
+                </div>
+            </li>
+        </ul>
+
+        {% include "oscar/partials/search.html" %}
+    </div>
+</nav>
