@@ -3,29 +3,101 @@
 
 {% block styles %}
     <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'images/apple-icon-57x57.png' %}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{% static 'images/apple-icon-60x60.png' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-icon-72x72.png' %}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'images/apple-icon-76x76.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-icon-114x114.png' %}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{% static 'images/apple-icon-120x120.png' %}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/apple-icon-144x144.png' %}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{% static 'images/apple-icon-152x152.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-icon-180x180.png' %}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/android-icon-192x192.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon-96x96.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'images/manifest.json' %}">
+  <meta name="msapplication-TileColor" content="#B97778">
+  <meta name="msapplication-TileImage" content="{% static 'images/ms-icon-144x144.png' %}">
+  <meta name="theme-color" content="#B97778">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Jane's Fashion">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178495783-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-178495783-1');
+  </script>
+
+  {% block css %}
+  {% endblock css %}
+
+  {% comment %}
+  <meta name="author" content="Themefisher.com"> {% endcomment %}
+  <meta name="theme-color" content="#B97778">
+
+
+  <!-- Mobile Specific Meta-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+  <!-- Themefisher Icon font -->
+  <link rel="stylesheet" href="{% static 'plugins/themefisher-font/style.css' %}">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+
+  <!-- Revolution Slider -->
+  <link rel="stylesheet" type="text/css"
+    href=" {% static 'plugins/revolution-slider/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css' %}">
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'plugins/revolution-slider/revolution/fonts/font-awesome/css/font-awesome.css' %}">
+
+  <!-- REVOLUTION STYLE SHEETS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'plugins/revolution-slider/revolution/css/settings.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugins/revolution-slider/revolution/css/layers.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugins/revolution-slider/revolution/css/navigation.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/lightbox2/css/lightbox.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+
+
 {% endblock %}
 
 {% block layout %}
-    {# Top-horizontal bar with account, notifictions, dashboard links #}
-    {% include "oscar/partials/nav_accounts.html" %}
-
-    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container">
-        <div class="page_inner">
-            <div class="row justify-content-between">
-                
-                {# Mini-basket wrapped in a block so some templates can now display it #}
-                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
-            </div>
+<!-- {% include "oscar/partials/nav_accounts.html" %} -->
+<header class="header">
+  <!--   <div class="page_inner">
+        <div class="row justify-content-between">
+            
+    
+        <!-- {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %} 
         </div>
-        {% block navigation %}
-            {% include "oscar/partials/nav_primary.html" %}
-        {% endblock %}
-    </header>
-
-    {# Main content of page - other layout templates may override this block #}
-    {% block content_wrapper %}
-        <div class="container page">
+    </div> -->
+    {% block navigation %}
+        {% include "oscar/partials/nav_primary.html" %}
+    {% endblock %}
+</header>
+{% block content_wrapper %}
+<div class="container page">
             <div class="page_inner">
                 {% block breadcrumbs %}{% endblock %}
                 {% block header %}
@@ -36,14 +108,16 @@
                 {% include "oscar/partials/alert_messages.html" %}
                 {% block subnavigation %}{% endblock %}
                 <div class="content">
-                    {% block subheader %}{% endblock subheader %}
+                    {% block subheader %}
+                    
+                    {% endblock subheader %}
 
-                    {# Div exists for AJAX updates to entire content section #}
-                    <div id="content_inner">{% block content %}{% endblock %}</div>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
+                                      
+<div id="content_inner">{% block content %}{% endblock %}</div>
+</div>
+</div>
+</div>
+{% endblock %}
 
     {% include "oscar/partials/footer.html" %}
 {% endblock %}

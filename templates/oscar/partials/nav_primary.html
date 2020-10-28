@@ -18,7 +18,7 @@
 			</div>
 			<div class="col-md-4 col-xs-12 col-sm-4">
 				<div class="contact-number">
-					<form action="" method='GET'><input type="search" class="form-control"
+					<form method='GET'><input type="search" class="form-control"
 							value="{{ request.GET.q }}" name="q" placeholder="Search..."></form>
 
 				</div>
@@ -28,7 +28,7 @@
 				<ul class="top-menu text-right list-inline">
 
 					<li class="dropdown search dropdown-slide">
-						<a href=""> <i class="tf-ion-ios-cart fs-24"></i>
+						<a href="{% url 'basket:summary' %}"> <i class="tf-ion-ios-cart fs-24"></i>
 							 </a>
 					</li>
 					<!-- Search -->
@@ -39,6 +39,8 @@
 						<a href=""> <i class="tf-ion-android-favorite-outline fs-24"></i>
 							Favourite </a>
 					</li>
+
+					{% if request.user.is_authenticated %}
 					<li class="dropdown search dropdown-slide">
 						<a href=""> <i class="tf-ion-log-out fs-24"></i> Logout </a>
 
@@ -47,7 +49,7 @@
 					</li>
 
 					
-
+{% else %}
 					<li class="dropdown search dropdown-slide">
 
 
@@ -57,7 +59,7 @@
 
 					</li><!-- / Search -->
 
-
+{% endif %}
 
 				</ul><!-- / .nav .navbar-nav .navbar-right -->
 			</div>

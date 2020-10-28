@@ -3,8 +3,8 @@ from collections import OrderedDict
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-OSCAR_SHOP_NAME = 'Oscar'
-OSCAR_SHOP_TAGLINE = ''
+OSCAR_SHOP_NAME = "Jane's Fashion"
+OSCAR_SHOP_TAGLINE = "Jane's Fashion"
 OSCAR_HOMEPAGE = reverse_lazy('catalogue:index')
 
 # Dynamic class loading
@@ -23,7 +23,7 @@ OSCAR_RECENTLY_VIEWED_COOKIE_SECURE = False
 OSCAR_RECENTLY_VIEWED_PRODUCTS = 20
 
 # Currency
-OSCAR_DEFAULT_CURRENCY = 'GBP'
+OSCAR_DEFAULT_CURRENCY = 'NGN'
 
 # Paths
 OSCAR_IMAGE_FOLDER = 'images/products/%Y/%m/'
@@ -69,7 +69,7 @@ OSCAR_EAGER_ALERTS = True
 
 # Registration
 OSCAR_SEND_REGISTRATION_EMAIL = True
-OSCAR_FROM_EMAIL = 'oscar@example.com'
+OSCAR_FROM_EMAIL = 'contact@jane-fashion.com'
 
 # Slug handling
 OSCAR_SLUG_FUNCTION = 'oscar.core.utils.default_slugifier'
